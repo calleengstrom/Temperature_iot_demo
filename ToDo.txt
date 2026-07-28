@@ -1,0 +1,5 @@
+Temperature_iot_demo TODO:
+Esp with dht11 sensor for temp and hum data !
+Java spring-hibernate-MySQL backend !
+
+Add a system from Reading data and if temp to high / low - signal to Another esp to "turn on heater/ac"
