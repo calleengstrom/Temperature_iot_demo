@@ -22,23 +22,23 @@ public class TempHumController {
         return repo.findAll();
     }
 
-    @RequestMapping("Temp/{id}")
+    @RequestMapping("Temp/id/{id}")
     public TempHum getById(@PathVariable long id){
         return repo.findById(id).get();
     }
 
-    @RequestMapping("Temp/{room}")
+    @RequestMapping("Temp/room/{room}")
     public List<TempHum> getRoom(@PathVariable String room){
         return repo.findByRoom(room);
     }
 
-    @RequestMapping("Temp/{room}/Latest")
+    @RequestMapping("Temp/room/{room}/Latest")
     public TempHum getLatest(@PathVariable String room){
         return repo.findByRoom(room).getLast();
     }
 
-    @RequestMapping ("Temp/{room}/avg")
-    public String getAvgDataByRoom(@PathVariable String room){
+    @RequestMapping ("Temp/room/{room}/avg")
+    public AvgData getAvgDataByRoom(@PathVariable String room){
         double avgTemp = 0;
         double avgHum = 0;
         int counter = 0;
@@ -49,6 +49,6 @@ public class TempHumController {
         }
         avgTemp /= counter;
         avgHum /= counter;
-        return String.format("Avg Temp : %.2f \n Avg Hum : %.2f \n Room : %s",avgTemp,avgHum,room);
+        return new AvgData(avgTemp,avgHum,room,counter);
     }
 }
