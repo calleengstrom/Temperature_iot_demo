@@ -1,5 +1,4 @@
 #include "../include/config.h"
-
 #include "../include/wifi_connect.h"
 
 static EventGroupHandle_t s_wifi_event_group = NULL;
@@ -113,7 +112,7 @@ bool wifi_connect(void)
 
     xEventGroupClearBits(s_wifi_event_group, WIFI_CONNECTED_BIT | WIFI_FAIL_BIT);
     s_retry_num = 0;
-    esp_wifi_connect();
+    
 
     EventBits_t bits = xEventGroupWaitBits(s_wifi_event_group,
                                            WIFI_CONNECTED_BIT | WIFI_FAIL_BIT,
