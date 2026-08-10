@@ -11,15 +11,16 @@ public class MqttPublisher {
 
     public MqttPublisher() throws Exception {
 
-        String broker ="tcp://localhost:1883";
+        String broker = String.format("tcp://%s:1883", Configs.BROKER_IP);
         String clientId = MqttClient.generateClientId();
 
         client = new MqttClient(broker, clientId);
-        MqttConnectOptions options = new MqttConnectOptions();
+        MqttConnectOptions options= new MqttConnectOptions();
+        options.setUserName(Configs.BROKER_USERNAME);
+        options.setPassword(Configs.BROKER_PASSWORD.toCharArray());
         options.setAutomaticReconnect(true);
         options.setCleanSession(true);
-
-        client.connect();
+        client.connect(options);
 
 
     }
