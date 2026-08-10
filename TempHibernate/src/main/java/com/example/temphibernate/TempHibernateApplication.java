@@ -9,12 +9,7 @@ public class TempHibernateApplication {
 
     public static void main(String[] args) throws Exception {
         SpringApplication.run(TempHibernateApplication.class, args);
-        boolean test = true;
-        MqttPublisher publisher = new MqttPublisher();
-        if (test){
-            publisher.publish("temp/room/office/cmd","test");
-            test = false;
-        }
+
 
     }
 

@@ -1,10 +1,13 @@
 package com.example.temphibernate.mqtt;
 
+import jakarta.annotation.PreDestroy;
 import org.eclipse.paho.client.mqttv3.MqttClient;
 import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class MqttPublisher {
 
     private final MqttClient client;
@@ -32,5 +35,6 @@ public class MqttPublisher {
 
         client.publish(topic,mqttMessage);
     }
+
 
 }
