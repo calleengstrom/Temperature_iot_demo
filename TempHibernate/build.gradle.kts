@@ -30,6 +30,10 @@ dependencies {
     testCompileOnly("org.projectlombok:lombok")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     testAnnotationProcessor("org.projectlombok:lombok")
+<<<<<<< HEAD
+=======
+    implementation("org.eclipse.paho:org.eclipse.paho.client.mqttv3:1.2.5")
+>>>>>>> esp_climate_controll
 }
 
 tasks.withType<Test> {

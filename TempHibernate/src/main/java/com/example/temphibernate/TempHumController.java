@@ -1,5 +1,6 @@
 package com.example.temphibernate;
 
+import com.example.temphibernate.tempservice.TempratureServiceController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -7,8 +8,11 @@ import java.util.List;
 @RestController
 public class TempHumController {
     private final TempHumRepo repo;
+    private final TempratureServiceController tempController;
 
-    TempHumController(TempHumRepo repo){ this.repo = repo;}
+    TempHumController(TempHumRepo repo, TempratureServiceController tempController){ this.repo = repo;
+        this.tempController = tempController;
+    }
 
 
     @RequestMapping("Temp")
@@ -17,9 +21,10 @@ public class TempHumController {
     }
 
     @PostMapping("Temp/PostTemp")
-    public List<TempHum> addNewTH(@RequestBody TempHum tH){
+    public String addNewTH(@RequestBody TempHum tH) throws Exception {
         repo.save(tH);
-        return repo.findAll();
+        tempController.temperatureController(tH);
+        return "HTTP : 200";
     }
 
     @RequestMapping("Temp/id/{id}")

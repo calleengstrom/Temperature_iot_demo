@@ -1,13 +1,19 @@
 package com.example.temphibernate;
 
+import com.example.temphibernate.mqtt.MqttPublisher;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class TempHibernateApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         SpringApplication.run(TempHibernateApplication.class, args);
+
+
     }
+
+
+
 
 }
