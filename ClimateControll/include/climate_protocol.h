@@ -2,6 +2,10 @@
 #define CLIMATE_PROTCOL_H
 #include "./includes.h"
 
+#define CLIMATE_PROTOCOL_NORMAL "NORMAL"
+#define CLIMATE_PROTOCOL_HEATING "HEATING"
+#define CLIMATE_PROTOCOL_COOLING "COOLING"
+
 
 typedef enum{
     NORMAL,
