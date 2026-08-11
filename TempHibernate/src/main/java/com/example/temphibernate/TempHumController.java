@@ -8,7 +8,7 @@ import java.util.List;
 @RestController
 public class TempHumController {
     private final TempHumRepo repo;
-
+    TempratureServiceController tempController = new TempratureServiceController();
     TempHumController(TempHumRepo repo){ this.repo = repo;}
 
 
@@ -20,7 +20,7 @@ public class TempHumController {
     @PostMapping("Temp/PostTemp")
     public String addNewTH(@RequestBody TempHum tH) throws Exception {
         repo.save(tH);
-        new TempratureServiceController().temperatureController(tH);
+        tempController.temperatureController(tH);
         return "HTTP : 200";
     }
 

@@ -7,17 +7,17 @@ public class TempratureServiceController {
 
     public void temperatureController (TempHum tH) throws Exception {
         MqttPublisher publisher = new MqttPublisher();
-        if ( tH.getTemp() < 24 &&  tH.getTemp() > 21){
-            publisher.publish("temp/room/office/cmd","NORMAL");
+        if ( tH.getTemp() <= 24 &&  tH.getTemp() > 21){
+            publisher.publish("climate/office","NORMAL");
             IO.println("Normal temp");
             return;
         }
-        if (tH.getTemp() > 23){
-            publisher.publish("temp/room/office/cmd","COOLING");
+        if (tH.getTemp() >= 25){
+            publisher.publish("climate/office","COOLING");
             IO.println("High temp");
         }
         else {
-            publisher.publish("temp/room/office/cmd", "HEATING");
+            publisher.publish("climate/office", "HEATING");
             IO.println("Low temp");
         }
     }
