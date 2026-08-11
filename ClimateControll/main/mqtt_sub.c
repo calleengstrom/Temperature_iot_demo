@@ -4,6 +4,7 @@
 #include "../include/rgb.h"
 #include "../include/climate_protocol.h"
 static const char *TAG = "MQTT : ";
+
 static void mqtt_event_handler(void *event_handler_arg,
                                esp_event_base_t event_base,
                                int32_t event_id,
@@ -19,22 +20,25 @@ static void mqtt_event_handler(void *event_handler_arg,
         esp_mqtt_client_subscribe(event->client, "climate/office", 1);
         break;
     case MQTT_EVENT_DATA:
-        ESP_LOGI(TAG, "Message %.*s",
-                 event->data_len,
-                 event->data);
+        char mqtt_msg[64];
 
-        switch (mqtt_protocol(event->data))
+        memcpy(mqtt_msg, event->data, event->data_len);
+        mqtt_msg[event->data_len] = '\0';
+
+        ESP_LOGI(TAG, "Message %s", mqtt_msg);
+
+        switch (mqtt_protocol(mqtt_msg))
         {
         case NORMAL:
             green_on();
             break;
-         case HEATING:
+        case HEATING:
             red_on();
             break;
-         case COOLING:
+        case COOLING:
             blue_on();
             break;
-            
+
         default:
             break;
         }
