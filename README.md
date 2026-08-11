@@ -47,6 +47,10 @@ Key features
 - MySQL persistence for collected temperature data.
 - MQTT-based climate control messages for a second ESP32 device.
 - Simple climate modes: Normal, Heating, and Cooling.
+- RGB indicator light behavior:
+  - Normal = green light
+  - Heating = blue light
+  - Cooling = red light
 
 Hardware and software used
 --------------------------
@@ -85,3 +89,5 @@ Notes
 - Credentials and network settings should be kept private.
 - The current implementation is a learning prototype and may be improved over time.
 - The project can be expanded with better error handling, security, dashboards, and more advanced automation.
+
+![Project preview](preview.png)
