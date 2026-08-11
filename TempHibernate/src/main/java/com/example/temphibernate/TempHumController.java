@@ -8,8 +8,11 @@ import java.util.List;
 @RestController
 public class TempHumController {
     private final TempHumRepo repo;
-    TempratureServiceController tempController = new TempratureServiceController();
-    TempHumController(TempHumRepo repo){ this.repo = repo;}
+    private final TempratureServiceController tempController;
+
+    TempHumController(TempHumRepo repo, TempratureServiceController tempController){ this.repo = repo;
+        this.tempController = tempController;
+    }
 
 
     @RequestMapping("Temp")
